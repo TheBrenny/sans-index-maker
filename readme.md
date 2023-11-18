@@ -1,6 +1,8 @@
 # sans-index-maker
 > Works on my machine™️
 
+# ❗❗❗ IN AN ARCHIVE AND WONT BE MAINTAINED ❗❗❗
+
 Pass a combined PDF book and password and generate an index of all occurences of words in the book!
 
 Run this PS command to run for all books - change the course name as required or leave it out. *Don't include SANS in the course name!!*
