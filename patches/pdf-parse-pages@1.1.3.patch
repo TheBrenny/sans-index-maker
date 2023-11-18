@@ -1,0 +1,33 @@
+diff --git a/lib/pdf-parse-pages.js b/lib/pdf-parse-pages.js
+index 7497e8e8e79e1b3d565522369865f2c65c4e97e7..c66d8b508379a3bab48836b784c75fb6ce881063 100644
+--- a/lib/pdf-parse-pages.js
++++ b/lib/pdf-parse-pages.js
+@@ -15,7 +15,7 @@ var pdf = async function (dataBuffer, userOptions){
+     };
+     let options = checkOptions(userOptions);
+     ret.version = PDFJS.version;
+-    let doc = await PDFJS.getDocument(dataBuffer);
++    let doc = await PDFJS.getDocument(dataBuffer, undefined, userOptions.password);
+     ret.numpages = doc.numPages;
+ 
+     let metaData = await doc.getMetadata().catch(function(err) {
+@@ -77,7 +77,8 @@ const DEFAULT_OPTIONS = {
+     //do not attempt to combine same line TextItem's. The default value is `false`.
+     disableCombineTextItems: false,
+     disableWorker: true,
+-    verbosity: -1
++    verbosity: -1,
++    password: undefined,
+ };
+ 
+ function checkOptions(userOptions){
+@@ -90,7 +91,8 @@ function checkOptions(userOptions){
+     if (typeof options.normalizeWhitespace != 'boolean') options.normalizeWhitespace = DEFAULT_OPTIONS.normalizeWhitespace; 
+     if (typeof options.disableCombineTextItems != 'boolean') options.disableCombineTextItems = DEFAULT_OPTIONS.disableCombineTextItems;
+     if (typeof options.disableWorker != 'boolean') options.disableWorker = DEFAULT_OPTIONS.disableWorker;
+-    if (typeof options.verbosity != 'number') options.verbosity = DEFAULT_OPTIONS.verbosity;
++    if(typeof options.verbosity != 'number') options.verbosity = DEFAULT_OPTIONS.verbosity;
++    if(typeof options.password != 'function') options.password = DEFAULT_OPTIONS.password;
+ 
+     //configure pdf.js
+     PDFJS = PDFJS ? PDFJS : require(`./pdf.js/${options.version}/build/pdf.js`);

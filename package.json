@@ -1,0 +1,22 @@
+{
+    "name": "sans-index-maker",
+    "version": "1.0.0",
+    "description": "Pass a combined PDF book and password and generate an index of all occurences of words in the book! (Superpowers coming soon!)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no tests specified. Maybe you could make one?\""
+    },
+    "keywords": [],
+    "author": "TheBrenny <iam@justbrenny.me>",
+    "license": "MIT",
+    "dependencies": {
+        "natural": "^6.8.0",
+        "pdf-parse-pages": "^1.1.3",
+        "readline-sync": "^1.4.10"
+    },
+    "pnpm": {
+        "patchedDependencies": {
+            "pdf-parse-pages@1.1.3": "patches/pdf-parse-pages@1.1.3.patch"
+        }
+    }
+}
